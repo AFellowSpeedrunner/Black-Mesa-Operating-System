@@ -13,7 +13,9 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
+    - name: Update apt list
+      run: sudo apt update && apt upgrade
     - name: Install dependencies
-      run: sudo apt install grub x86_64-elf-ld g++ gcc
+      run: sudo apt install grub2-common grub-pc g++ gcc build-essential
     - name: Make kernel
       run: make build-x86_64
