@@ -6,3 +6,5 @@ So this is supposed to be a project attempting to see what an Operating System t
 Yes, I did steal code from an older project that I made that I used from a tutorial.
 
 It does boot but I can't find any motivation to add more due to it not being able to find c++ libs and stuff, probably because it's running debian 9 via docker on a windows 11 home pc.
+
+I hope you find more luck than me attempting to add more.
