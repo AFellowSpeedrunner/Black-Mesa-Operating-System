@@ -13,5 +13,7 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-    - name: make
+    - name: Install dependencies
+      run: apt install grub x86_64-elf-ld g++ gcc
+    - name: Make kernel
       run: make build-x86_64
