@@ -17,9 +17,9 @@ jobs:
       run: sudo apt update
     - name: Set up x86_64-elf-gcc toolchain
       run: | 
-        git clone https://github.com/danidoco/x86_64-elf-gcc/
-        cd x86_64-elf-gcc
-        chmod +x setup.sh
-        sudo ./setup.sh
+        git clone https://github.com/lordmilko/i686-elf-tools
+        cd i686-elf-tools
+        chmod +x i686-elf-tools.sh
+        sudo ./i686-elf-tools.sh
     - name: Make kernel
       run: make build-x86_64
