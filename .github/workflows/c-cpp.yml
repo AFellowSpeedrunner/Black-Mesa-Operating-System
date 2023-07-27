@@ -14,7 +14,12 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Update apt list
-      run: sudo apt update && sudo apt upgrade
+      run: sudo apt update
+    - name: Set up QEMU Arm toolchain
+      run: |
+        wget -O toolchain.tar.gz <URL_TO_YOUR_TOOLCHAIN>
+        tar -xzf toolchain.tar.gz
+        export PATH="$PWD/xpack-qemu-arm/bin:$PATH"
     - name: Install dependencies
       run: sudo apt install grub2-common grub-pc g++ gcc build-essential
     - name: Make kernel
