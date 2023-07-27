@@ -14,7 +14,7 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Update apt list
-      run: sudo apt update && apt upgrade
+      run: sudo apt update && sudo apt upgrade
     - name: Install dependencies
       run: sudo apt install grub2-common grub-pc g++ gcc build-essential
     - name: Make kernel
