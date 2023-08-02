@@ -15,11 +15,7 @@ jobs:
     - uses: actions/checkout@v3
     - name: Update apt list
       run: sudo apt update
-    - name: Set up x86_64-elf-gcc toolchain
-      run: | 
-        git clone https://github.com/lordmilko/i686-elf-tools
-        cd i686-elf-tools
-        chmod +x i686-elf-tools.sh
-        sudo ./i686-elf-tools.sh
+    - name: Set up compiler
+      run: sudo apt install gcc-cross-x86_64-elf 
     - name: Make kernel
       run: make build-x86_64
