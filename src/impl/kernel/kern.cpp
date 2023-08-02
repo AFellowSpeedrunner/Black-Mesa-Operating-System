@@ -3,6 +3,9 @@
 #include <unistd.h>
 #include "print.h"
 
+// Function prototype for the delay function
+void delay(int milliseconds);
+
 void BMIK_MAIN() {
     print_clear();
     print_set_color(PRINT_COLOR_WHITE, PRINT_COLOR_BLACK);
