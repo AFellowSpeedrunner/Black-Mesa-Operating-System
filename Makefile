@@ -1,3 +1,5 @@
+LDFLAGS := -T targets/x86_64/linker.ld -no-pie
+
 kernel_source_files := $(shell find src/impl/kernel -name *.cpp)
 kernel_object_files := $(patsubst src/impl/kernel/%.cpp, build/kernel/%.o, $(kernel_source_files))
 
