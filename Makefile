@@ -31,6 +31,5 @@ build/x86_64/print.o: src/impl/x86_64/print.cpp
 .PHONY: build-x86_64
 build-x86_64: $(kernel_object_files) $(x86_64_object_files)
 	mkdir -p dist/x86_64 && \
-	g++ -T targets/x86_64/linker.ld -no-pie -nostartfiles -o dist/x86_64/kernel.bin  build/kernel/kern.o   build/x86_64/boot/header.o  build/x86_64/boot/kern.o  build/x86_64/boot/kern64.o build/x86_64/print.o -lgcc && \
-	cp dist/x86_64/kernel.bin targets/x86_64/iso/boot/kernel.bin && \
+	g++ -T targets/x86_64/linker.ld -no-pie -o dist/x86_64/kernel.bin  build/kernel/kern.o   build/x86_64/boot/header.o  build/x86_64/boot/kern.o  build/x86_64/boot/kern64.o 
 	grub-mkrescue /usr/lib/grub/i386-pc -o dist/x86_64/kernel.iso targets/x86_64/iso
