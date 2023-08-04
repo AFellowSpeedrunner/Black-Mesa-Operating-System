@@ -3,17 +3,17 @@
 constexpr static size_t NUM_COLS = 80;
 constexpr static size_t NUM_ROWS = 25;
 
-struct Char {
+static struct Char {
     uint8_t character;
     uint8_t color;
 };
 
-struct Char* buffer = reinterpret_cast<struct Char*>(0xb8000);
-size_t col = 0;
-size_t row = 0;
-uint8_t color = PRINT_COLOR_WHITE | (PRINT_COLOR_BLACK << 4);
+static struct Char* buffer = reinterpret_cast<struct Char*>(0xb8000);
+static size_t col = 0;
+static size_t row = 0;
+static uint8_t color = PRINT_COLOR_WHITE | (PRINT_COLOR_BLACK << 4);
 
-void clear_row(size_t row) {
+static void clear_row(size_t row) {
     struct Char empty = {
         .character = ' ',
         .color = color,
