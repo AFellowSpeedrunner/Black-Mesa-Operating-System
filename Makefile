@@ -1,7 +1,7 @@
-LDFLAGS := -T targets/x86_64/linker.ld
+LDFLAGS := -T targets/x86_64/linker.ld -fPIE
 CXX := g++
 CFLAGS := -I src/intf -ffreestanding
-CPPFLAGS := -ffreestanding -fPIE  # Add -fPIE specifically for C++ files
+CPPFLAGS := -ffreestanding
 
 kernel_source_files := $(shell find src/impl/kernel -name *.cpp)
 kernel_object_files := $(patsubst src/impl/kernel/%.cpp, build/kernel/%.o, $(kernel_source_files))
