@@ -23,7 +23,7 @@ $(x86_64_cpp_object_files): build/x86_64/%.o : src/impl/x86_64/%.cpp
 
 $(x86_64_asm_object_files): build/x86_64/%.o : src/impl/x86_64/%.asm
 	mkdir -p $(dir $@) && \
-	nasm -f elf64 $(patsubst build/x86_64/%.o, src/impl/x86_64/%.asm, $@) -o $@
+	nasm -f elf64 -fPIE $(patsubst build/x86_64/%.o, src/impl/x86_64/%.asm, $@) -o $@
 
 build/x86_64/print.o: src/impl/x86_64/print.cpp
 	mkdir -p $(dir $@) && \
