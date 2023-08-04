@@ -1,6 +1,6 @@
-LDFLAGS := -T targets/x86_64/linker.ld
+LDFLAGS := -T targets/x86_64/linker.ld -fPIE
 CXX := g++
-CFLAGS := -fPIE
+CFLAGS := -c -I src/intf -ffreestanding
 
 kernel_source_files := $(shell find src/impl/kernel -name *.cpp)
 kernel_object_files := $(patsubst src/impl/kernel/%.cpp, build/kernel/%.o, $(kernel_source_files))
@@ -32,5 +32,5 @@ build/x86_64/print.o: src/impl/x86_64/print.cpp
 .PHONY: build-x86_64
 build-x86_64: $(kernel_object_files) $(x86_64_object_files)
 	mkdir -p dist/x86_64 && \
-	$(CXX) $(LDFLAGS) -o dist/x86_64/kernel.bin  $(kernel_object_files) $(x86_64_object_files)
+	gcc $(LDFLAGS) -o dist/x86_64/kernel.bin  $(kernel_object_files) $(x86_64_object_files)
 	grub-mkrescue /usr/lib/grub/i386-pc -o dist/x86_64/kernel.iso targets/x86_64/iso
