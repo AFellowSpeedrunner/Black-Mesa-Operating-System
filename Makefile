@@ -1,4 +1,4 @@
-LDFLAGS := -T targets/x86_64/linker.ld
+LDFLAGS := -T targets/x86_64/linker.ld -fPIE
 CXX := g++
 
 kernel_source_files := $(shell find src/impl/kernel -name *.cpp)
@@ -14,11 +14,11 @@ x86_64_object_files := $(x86_64_cpp_object_files) $(x86_64_asm_object_files) bui
 
 $(kernel_object_files): build/kernel/%.o : src/impl/kernel/%.cpp
 	mkdir -p $(dir $@) && \
-	$(CXX) $(CFLAGS) -c -I src/intf -ffreestanding $(patsubst build/kernel/%.o, src/impl/kernel/%.cpp, $@) -o $@
+	$(CXX) $(CFLAGS) -fPIE -c -I src/intf -ffreestanding $(patsubst build/kernel/%.o, src/impl/kernel/%.cpp, $@) -o $@
 
 $(x86_64_cpp_object_files): build/x86_64/%.o : src/impl/x86_64/%.cpp
 	mkdir -p $(dir $@) && \
-	$(CXX) $(CFLAGS) -c -I src/intf -ffreestanding $(patsubst build/x86_64/%.o, src/impl/x86_64/%.cpp, $@) -o $@
+	$(CXX) $(CFLAGS) -fPIE -c -I src/intf -ffreestanding $(patsubst build/x86_64/%.o, src/impl/x86_64/%.cpp, $@) -o $@
 
 $(x86_64_asm_object_files): build/x86_64/%.o : src/impl/x86_64/%.asm
 	mkdir -p $(dir $@) && \
@@ -26,7 +26,7 @@ $(x86_64_asm_object_files): build/x86_64/%.o : src/impl/x86_64/%.asm
 
 build/x86_64/print.o: src/impl/x86_64/print.cpp
 	mkdir -p $(dir $@) && \
-	$(CXX) $(CFLAGS) -c -I src/intf -ffreestanding $< -o $@
+	$(CXX) $(CFLAGS) -fPIE -c -I src/intf -ffreestanding $< -o $@
 
 .PHONY: build-x86_64
 build-x86_64: $(kernel_object_files) $(x86_64_object_files)
