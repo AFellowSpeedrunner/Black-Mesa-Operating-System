@@ -29,5 +29,5 @@ $(x86_64_asm_object_files): build/x86_64/%.o : src/impl/x86_64/%.asm
 .PHONY: build-x86_64
 build-x86_64: $(kernel_object_files) $(x86_64_object_files)
 	mkdir -p dist/x86_64 && \
-	g++ $(LDFLAGS) -o dist/x86_64/kernel.bin $(kernel_object_files) $(x86_64_object_files) -nostdlib -fPIE
+	g++ $(LDFLAGS) -o dist/x86_64/kernel.bin $(kernel_object_files) $(x86_64_object_files) -nostdlib
 	grub-mkrescue /usr/lib/grub/i386-pc -o dist/x86_64/kernel.iso targets/x86_64/iso
