@@ -1,4 +1,10 @@
 # BMOS (Black Mesa Operating System)
+## Older code has been removed for complete rewrite.
+
+Due to completely broken code and others things just not working, the project is being currently rewritten. This should be compilable on Linux with some packages currently but I'm not ready to write compile instructions or upload the current code until I can get somewhere usable like a shell or something.
+
+## Main content
+
 It used to compile... until docker decided no. Any help on this would be VERY appreciated.
 
 So this is supposed to be a project attempting to see what an Operating System that the fictional company, Black Mesa, from the Half-Life series would use. This idea came to fruition because I was playing Black Mesa and on the computers I saw BMOS multiple times.
